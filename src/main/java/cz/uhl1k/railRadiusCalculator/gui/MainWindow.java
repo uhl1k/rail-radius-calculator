@@ -11,8 +11,10 @@ import java.util.ResourceBundle;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -113,6 +115,12 @@ public class MainWindow extends JFrame {
       } catch (WrongAngleException ex) {
         x.setText("X:");
         y.setText("Y:");
+        JOptionPane.showMessageDialog(this, ex.getMessage(), bundle.getString("error") + "!", JOptionPane.WARNING_MESSAGE);
+        return;
+      } catch (NumberFormatException ex) {
+        x.setText("X:");
+        y.setText("Y:");
+        JOptionPane.showMessageDialog(this, bundle.getString("angleNotNumber"), bundle.getString("error") + "!", JOptionPane.WARNING_MESSAGE);
         return;
       }
       x.setText("X: " + pair.getFirst());

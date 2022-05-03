@@ -49,7 +49,7 @@ public class RadiusValuesCalculator {
     } else if (rads <= Math.PI/2) {
       return new Pair<>(Math.round(Math.sin(rads) * getRadius(narrowGauge, speed)), Math.round((1-Math.cos(rads)) * getRadius(narrowGauge, speed)));
     } else if (rads <= Math.PI) {
-      return new Pair<>(Math.round(Math.sin(rads) * getRadius(narrowGauge, speed)), Math.round(getRadius(narrowGauge, speed) + Math.cos(rads) * getRadius(narrowGauge, speed)));
+      return new Pair<>(Math.round(Math.sin(rads) * getRadius(narrowGauge, speed)), Math.round(getRadius(narrowGauge, speed) + Math.abs(Math.cos(rads) * getRadius(narrowGauge, speed))));
     } else {
       throw new WrongAngleException("Angle must be smaller than or equal to 180 degrees!");
     }
